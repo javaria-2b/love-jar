@@ -161,7 +161,7 @@ export default function DailyReveal({
                 gap: '8px',
                 padding: '12px 28px',
                 background: memoriesCount > 0 ? 'var(--ink)' : 'var(--border-color)',
-                color: 'var(--cream)',
+                color: 'var(--blush)',
                 borderRadius: '25px',
                 fontSize: '1rem',
                 fontFamily: 'var(--font-display)',
