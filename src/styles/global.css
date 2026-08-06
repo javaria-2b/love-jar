@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+:root {
+  /* Vintage love letter palette */
+  --ink: #2F1B0E;
+  --ink-light: #5C4033;
+  --parchment: #F5E6CC;
+  --parchment-dark: #E8D5B0;
+  --cream: #FDF8F0;
+  --wax-red: #8B0000;
+  --wax-red-light: #B22222;
+  --dusty-rose: #C4956A;
+  --gold: #B8963E;
+  --olive: #6B7059;
+  --lavender: #9B8EA8;
+  --bg-warm: #FBF7F0;
+
+  /* Fonts */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Lora', Georgia, serif;
+
+  /* Shadows */
+  --shadow-soft: 0 2px 20px rgba(47, 27, 14, 0.08);
+  --shadow-card: 0 4px 24px rgba(47, 27, 14, 0.12);
+  --shadow-lift: 0 8px 40px rgba(47, 27, 14, 0.15);
+
+  /* Borders */
+  --border-color: rgba(47, 27, 14, 0.12);
+  --border-vintage: 2px solid rgba(47, 27, 14, 0.15);
+
+  /* Sizing */
+  --max-width: 480px;
+  --header-height: 64px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background-color: var(--bg-warm);
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(180, 150, 120, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(155, 142, 168, 0.06) 0%, transparent 50%);
+  min-height: 100dvh;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Paper texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+h1 { font-size: 2.2rem; letter-spacing: -0.5px; }
+h2 { font-size: 1.6rem; letter-spacing: -0.3px; }
+h3 { font-size: 1.25rem; }
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: inherit;
+  color: inherit;
+}
+
+input, textarea {
+  font-family: var(--font-body);
+  font-size: inherit;
+  color: var(--ink);
+}
+
+a {
+  color: var(--ink-light);
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba(139, 0, 0, 0.15);
+  color: var(--ink);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(47, 27, 14, 0.15);
+  border-radius: 3px;
+}
+
+/* Utility classes */
+.vignette {
+  position: relative;
+}
+.vignette::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 80px rgba(47, 27, 14, 0.08);
+  border-radius: inherit;
+}
+
+.torn-edge {
+  position: relative;
+}
+.torn-edge::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: var(--cream);
+  clip-path: polygon(
+    0% 100%, 3% 40%, 7% 80%, 12% 30%, 17% 70%, 22% 20%, 27% 60%, 32% 35%,
+    37% 75%, 42% 25%, 47% 65%, 52% 40%, 57% 80%, 62% 30%, 67% 70%, 72% 35%,
+    77% 60%, 82% 25%, 87% 75%, 92% 40%, 97% 65%, 100% 30%, 100% 100%, 0% 100%
+  );
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-8px) rotate(1deg); }
+  75% { transform: translateY(-4px) rotate(-1deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(184, 150, 62, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(184, 150, 62, 0.6); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.15); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.1); }
+  60% { transform: scale(1); }
+}
+
+@keyframes ink-spread {
+  from { clip-path: circle(0% at 50% 50%); }
+  to { clip-path: circle(100% at 50% 50%); }
+}
+
+/* Responsive helpers */
+@media (max-width: 600px) {
+  html { font-size: 15px; }
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.4rem; }
+}
