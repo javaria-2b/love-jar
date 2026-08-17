@@ -175,7 +175,7 @@ export default function DailyReveal({
                   color: "var(--ink-light)",
                 }}
               >
-                sealed with lovee since {getTimeOfDay()}
+                sealed with loveeee since {getTimeOfDay()}
               </p>
             </div>
 
